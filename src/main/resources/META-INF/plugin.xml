@@ -1,0 +1,46 @@
+<idea-plugin>
+    <id>com.seowebchecker.seoaudit</id>
+    <name>Advanced SEO Audit</name>
+    <vendor email="support@seowebchecker.com" url="https://seowebchecker.com/">SEOWebChecker</vendor>
+
+    <description><![CDATA[
+    <h2>Advanced SEO Audit for JetBrains IDEs</h2>
+    <p>Professional technical SEO auditing, on-page diagnostics, crawler, Core Web Vitals inspection, and structured data validation directly inside your IDE.</p>
+    <h3>Key Features</h3>
+    <ul>
+        <li><strong>On-Page SEO Diagnostics:</strong> Missing or malformed title tags, meta descriptions, canonical URLs, robots meta directives, language tags, and heading hierarchy.</li>
+        <li><strong>Technical SEO Analysis:</strong> HTTP status codes, redirect loops, canonicalization consistency, and HTTPS mixed content.</li>
+        <li><strong>Structured Data & Schema.org:</strong> JSON-LD syntax validation, schema type verification (Article, Product, Organization, Breadcrumbs), and missing properties.</li>
+        <li><strong>Performance & Core Web Vitals:</strong> Response time (TTFB), missing text compression, image lazy-loading, and CLS image dimension checks.</li>
+        <li><strong>IDE Project Source Scanner:</strong> Audits HTML, PHP, JSX, TSX, Vue, Svelte, XML sitemaps, and robots.txt files in your project.</li>
+        <li><strong>Website Crawler:</strong> Bounded, concurrent crawler with SSRF protection, robots.txt compliance, and progress cancellation.</li>
+        <li><strong>Interactive Tool Window:</strong> Dynamic filtering by severity and category, instant preview of evidence and recommendations, and safe quick fixes.</li>
+        <li><strong>Export Subsystem:</strong> Generates executive reports in HTML, JSON, CSV, and Markdown.</li>
+    </ul>
+    ]]></description>
+
+    <change-notes><![CDATA[
+    <h3>1.0.0</h3>
+    <ul>
+        <li>Initial production release of Advanced SEO Audit for JetBrains Marketplace.</li>
+        <li>Integrated live crawler, local template scanner, and automated quick fixes.</li>
+    </ul>
+    ]]></change-notes>
+
+    <!-- Dependencies -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Main SEO Audit Tool Window -->
+        <toolWindow id="Advanced SEO Audit"
+                    anchor="bottom"
+                    factoryClass="com.seowebchecker.seoaudit.ui.SeoAuditToolWindowFactory"
+                    icon="AllIcons.General.Filter"/>
+
+        <!-- Persistent Settings Component & Configurable -->
+        <applicationService serviceImplementation="com.seowebchecker.seoaudit.settings.SeoAuditSettings"/>
+        <applicationConfigurable instance="com.seowebchecker.seoaudit.settings.SeoAuditConfigurable"
+                                 id="com.seowebchecker.seoaudit.settings"
+                                 displayName="Advanced SEO Audit"/>
+    </extensions>
+</idea-plugin>
